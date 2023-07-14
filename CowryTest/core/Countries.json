@@ -1,0 +1,22 @@
+
+[
+{
+  "flag": "DE",
+  "currency": "EUR"
+},
+
+{
+  "flag": "US",
+  "currency": "USD"
+},
+
+{
+  "flag": "NG",
+  "currency": "NGN"
+},
+
+{
+  "flag": "AU",
+  "currency": "AUD"
+}
+]
