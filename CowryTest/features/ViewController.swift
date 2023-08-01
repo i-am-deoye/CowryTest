@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     }
     
     private func selectorFirst() {
-        setSelector(selector: firstCurrencyField, filter: ["AUD", "NGN", "USD"]) { symbol in
+        setSelector(selector: firstCurrencyField, filter: []) { symbol in
             self.firstAmountInputField.currencyLabel.text = symbol
             self.firstAmountInputField.symbol = symbol
             self.viewmodel?.convert(base: symbol, against: self.secondAmountInputField.symbol ?? "")
@@ -52,25 +52,32 @@ class ViewController: UIViewController {
         }
     }
     
+    
     private func setSelector(selector: CurrencySelectorField, filter: [Symbol], handler:  @escaping (Symbol) -> Void) {
-        selector.currencyText.loadPickerViewForCustomView(data: viewmodel?.getCountry(filter: filter) ?? []) { selectedObject in
+        selector.currencyText.loadPickerViewForCustomView(data: viewmodel?.symbols ?? []) { selectedObject in
             guard let item = selectedObject as? Country else { return }
 
-            let flag = Flag(countryCode: item.flag)
-            selector.currencyText.text = item.currency
+            var countryCode = item.symbol
+            countryCode.removeLast()
+            
+            let flag = Flag(countryCode: countryCode)
+            selector.currencyText.text = item.symbol
             
             let image = UIImageView.init(image: flag?.originalImage)
             image.frame = .init(x: 4, y: 0, width: 20, height: 20)
             selector.currencyText.leftView = image
             selector.currencyText.leftViewMode = .always
-            handler(item.currency)
+            handler(item.symbol)
         } onDisplay: { (data, view) -> UIView in
             guard let country = data as? Country else { return UIView() }
             
-            let flag = Flag(countryCode: country.flag)
+            var countryCode = country.symbol
+            countryCode.removeLast()
+            
+            let flag = Flag(countryCode: countryCode)
             
             let itemView = UIView()
-            itemView.tag = country.flag.hashValue
+            itemView.tag = country.symbol.hashValue
             
             let icon = UIImageView()
             icon.image = flag?.originalImage
@@ -84,7 +91,7 @@ class ViewController: UIViewController {
             
             let title = UILabel()
             title.textColor = UIColor.black
-            title.text = country.currency
+            title.text = country.symbol
             title.translatesAutoresizingMaskIntoConstraints = false
             itemView.addSubview(title)
             title.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 16).isActive = true
@@ -101,14 +108,18 @@ class ViewController: UIViewController {
         let save = DefaultSaveConversion.init(repository: repository)
         let fetchConversion = DefaultFetchConversionHistory(repository: repository)
         let fetchRate = DefaultFetchRateUsecase(repository: repository)
+        let fetchSymbols = DefaultFetchSymbolsUsecase.init(repository: repository)
         
         viewmodel = DefaultHomeViewModel.init(saveConversionUsecase: save,
                                               fetchConversionHistoryUsecase: fetchConversion,
-                                              fetchRateUsecase: fetchRate)
+                                              fetchRateUsecase: fetchRate,
+                                              fetchSymbols: fetchSymbols)
         
         viewmodel?.errorHandler = { self.errorLabel.text = $0 }
-        selectorFirst()
-        selectorSecond()
+        viewmodel?.getSymbols(completion: {[weak self] in
+            self?.selectorFirst()
+            self?.selectorSecond()
+        })
     }
 }
 

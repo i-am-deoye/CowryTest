@@ -10,8 +10,9 @@ import Foundation
 
 public protocol HomeViewModel {
     var errorHandler: ((String) -> Void)? { get set }
+    var symbols: [SymbolPair] { get }
     
-    func getCountry(filter: [String]) -> [Country]
+    func getSymbols(completion: @escaping (() -> Void))
     func convert(base: Symbol, against: Symbol)
     func convert(value: Double) -> String
     func getHistroy() -> [Conversion]
@@ -22,20 +23,30 @@ public final class DefaultHomeViewModel: HomeViewModel {
     private let saveConversionUsecase: SaveConversion
     private let fetchConversionHistoryUsecase: FetchConversionHistory
     private let fetchRateUsecase: FetchRateUsecase
+    private let fetchSymbols: FetchSymbolsUsecase
     private var rate: Rate?
+    private var _symbols = [SymbolPair]()
     
     public var errorHandler: ((String) -> Void)?
+    public var symbols: [SymbolPair] {
+        return _symbols
+    }
     
-    init(saveConversionUsecase: SaveConversion, fetchConversionHistoryUsecase: FetchConversionHistory, fetchRateUsecase: FetchRateUsecase) {
+    init(saveConversionUsecase: SaveConversion, fetchConversionHistoryUsecase: FetchConversionHistory, fetchRateUsecase: FetchRateUsecase, fetchSymbols: FetchSymbolsUsecase) {
         self.saveConversionUsecase = saveConversionUsecase
         self.fetchRateUsecase = fetchRateUsecase
         self.fetchConversionHistoryUsecase =  fetchConversionHistoryUsecase
+        self.fetchSymbols = fetchSymbols
     }
     
     
-    
-    public func getCountry(filter: [String]) -> [Country] {
-        return Country.items().filter({ !filter.contains($0.currency) })
+    public func getSymbols(completion: @escaping (() -> Void)) {
+        fetchSymbols.execute { [weak self] pairs in
+            self?._symbols = pairs
+            completion()
+        } failure: { [weak self] message in
+            self?.errorHandler?(message)
+        }
     }
     
     

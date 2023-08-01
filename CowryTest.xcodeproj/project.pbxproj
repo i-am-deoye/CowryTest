@@ -63,6 +63,10 @@
 		8412FA962A61D709001023A3 /* XCTestCase+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412FA952A61D709001023A3 /* XCTestCase+Helpers.swift */; };
 		8412FA982A61D82A001023A3 /* FetchRateUsecaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412FA972A61D82A001023A3 /* FetchRateUsecaseSpy.swift */; };
 		8412FA9A2A61DA0F001023A3 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412FA992A61DA0F001023A3 /* HomeViewModelTests.swift */; };
+		841587522A798E0600E6BCA1 /* RSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841587512A798E0600E6BCA1 /* RSymbols.swift */; };
+		841587542A7994BE00E6BCA1 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841587532A7994BE00E6BCA1 /* Symbols.swift */; };
+		841587562A7996E700E6BCA1 /* LSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841587552A7996E700E6BCA1 /* LSymbol.swift */; };
+		841587582A79981000E6BCA1 /* FetchSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841587572A79981000E6BCA1 /* FetchSymbols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +142,10 @@
 		8412FA952A61D709001023A3 /* XCTestCase+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helpers.swift"; sourceTree = "<group>"; };
 		8412FA972A61D82A001023A3 /* FetchRateUsecaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRateUsecaseSpy.swift; sourceTree = "<group>"; };
 		8412FA992A61DA0F001023A3 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		841587512A798E0600E6BCA1 /* RSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSymbols.swift; sourceTree = "<group>"; };
+		841587532A7994BE00E6BCA1 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		841587552A7996E700E6BCA1 /* LSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSymbol.swift; sourceTree = "<group>"; };
+		841587572A79981000E6BCA1 /* FetchSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSymbols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +298,7 @@
 			children = (
 				8412FA492A606560001023A3 /* RRate.swift */,
 				8412FA4B2A607334001023A3 /* Response.swift */,
+				841587512A798E0600E6BCA1 /* RSymbols.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -342,6 +351,7 @@
 			children = (
 				8412FA6B2A615E75001023A3 /* LConversion.swift */,
 				8412FA6F2A6160B6001023A3 /* Entity.swift */,
+				841587552A7996E700E6BCA1 /* LSymbol.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -361,6 +371,7 @@
 				8412FA772A617114001023A3 /* Conversion.swift */,
 				8412FA792A61711B001023A3 /* Rate.swift */,
 				8412FA862A618693001023A3 /* Country.swift */,
+				841587532A7994BE00E6BCA1 /* Symbols.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -371,6 +382,7 @@
 				8412FA7C2A6172DF001023A3 /* SaveConversion.swift */,
 				8412FA7E2A6172EF001023A3 /* FetchRate.swift */,
 				8412FA802A617304001023A3 /* FetchConversionHistory.swift */,
+				841587572A79981000E6BCA1 /* FetchSymbols.swift */,
 			);
 			path = usecases;
 			sourceTree = "<group>";
@@ -522,6 +534,7 @@
 			files = (
 				8412FA202A604492001023A3 /* CurrencySelectorField.swift in Sources */,
 				8412FA692A615DCB001023A3 /* RealmUtility.swift in Sources */,
+				841587562A7996E700E6BCA1 /* LSymbol.swift in Sources */,
 				8412FA7D2A6172DF001023A3 /* SaveConversion.swift in Sources */,
 				8412FA222A6044C5001023A3 /* PaddingTextField.swift in Sources */,
 				8412FA522A609BAE001023A3 /* Int.swift in Sources */,
@@ -531,6 +544,7 @@
 				8412FA4C2A607334001023A3 /* Response.swift in Sources */,
 				8412FA6C2A615E75001023A3 /* LConversion.swift in Sources */,
 				8412FA0F2A5F4EF0001023A3 /* PaddingLabel.swift in Sources */,
+				841587582A79981000E6BCA1 /* FetchSymbols.swift in Sources */,
 				8412FA4A2A606560001023A3 /* RRate.swift in Sources */,
 				8412FA832A6176AA001023A3 /* HomeViewModel.swift in Sources */,
 				8412FA562A609D17001023A3 /* RateRepository.swift in Sources */,
@@ -551,6 +565,7 @@
 				8412FA8F2A618E31001023A3 /* Statics.swift in Sources */,
 				8412F9DF2A5F28E8001023A3 /* AppDelegate.swift in Sources */,
 				8412FA872A618693001023A3 /* Country.swift in Sources */,
+				841587542A7994BE00E6BCA1 /* Symbols.swift in Sources */,
 				8412FA782A617114001023A3 /* Conversion.swift in Sources */,
 				8412FA592A60A2C1001023A3 /* IDataBaseDriver.swift in Sources */,
 				8412FA5B2A60A2FA001023A3 /* ILocalCRUD.swift in Sources */,
@@ -560,6 +575,7 @@
 				8412FA702A6160B6001023A3 /* Entity.swift in Sources */,
 				8412FA502A609B58001023A3 /* IRemoteRepository.swift in Sources */,
 				8412F9E12A5F28E8001023A3 /* SceneDelegate.swift in Sources */,
+				841587522A798E0600E6BCA1 /* RSymbols.swift in Sources */,
 				8412FA1E2A604476001023A3 /* AmountInputField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -740,6 +756,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SM7AXKZSQJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CowryTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -767,6 +784,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SM7AXKZSQJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CowryTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -11,8 +11,7 @@ public enum EndPoints: String {
     private var baseURL: String { return "http://data.fixer.io/" }
     
     case latest = "api/latest?access_key={access_key}&symbols={symbols}" //&base={base}
-    case users = "users/{username}"
-    case repos = "users/{username}/repos?page={page}"
+    case symbols = "symbols?access_key={access_key}"
     
     
     public var absoluteString: String {

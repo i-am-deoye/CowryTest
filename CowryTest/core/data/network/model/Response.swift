@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Response{
+
+struct Response {
     let success: Bool
     let timestamp: Double
-    let base: String
-    let rates: JSON
+    let data: JSON
+    let others: [String: Any?]
 }
